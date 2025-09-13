@@ -45,3 +45,31 @@ class OrdersRepository():
         collection = self.__db_connection.get_collection(self.__collection_name)
         data = collection.find_one({ "_id": ObjectId(object_id) })
         return data
+
+    def edit_registry(self, object_id: str)-> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            { "_id": ObjectId(object_id) }, #filtros
+            { "$set": { 
+                "cupom": True,
+                "itens.pastel.tipo": "frango"
+                }
+            }, #values edit
+        )
+
+    def edit_many_registries(self)-> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_many(
+            { "itens.pastel": {"$exists": True}},
+            { "$set": { "itens.pastel.quantidade": 10 }}
+        )
+
+    def edit_registry_with_increment(self, object_id: str)-> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            { "_id": ObjectId(object_id) }, #filtros
+            { "$inc": { 
+                "itens.pastel.quantidade": 20
+                }
+            }
+        )
