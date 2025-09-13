@@ -107,3 +107,9 @@ def test_edit_registry_with_increment():
     orders_repository = OrdersRepository(conn)
     object_id = "68c157e321f0c5b3d9789ddc"
     orders_repository.edit_registry_with_increment(object_id)
+
+@pytest.mark.skip(reason="interaction with db")
+def test_delete_registry():
+    orders_repository = OrdersRepository(conn)
+    object_id = "68c57b1b9a1eed31c562af22"
+    orders_repository.delete_registry(object_id)

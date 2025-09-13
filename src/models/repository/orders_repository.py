@@ -73,3 +73,9 @@ class OrdersRepository():
                 }
             }
         )
+
+    def delete_registry(self, object_id: str)-> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.delete_one(
+            { "_id": ObjectId(object_id) }, #filtros
+        )
