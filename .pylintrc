@@ -10,7 +10,7 @@ disable=
       E0015, # unrecognized-option,
       W0719, # broad-exception-raised
       E1102, # not-callable
-      
+      R0903, # too-few-public-methods
 # Analyse import fallback blocks. This can be used to support both Python 2 and
 # 3 compatible code, which means that the block might have code that exists
 # only in one or another interpreter, leading to false positives when analysed.
