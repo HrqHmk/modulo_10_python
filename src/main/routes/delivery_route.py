@@ -13,6 +13,5 @@ def health():
 def registry_order():
     use_case = registry_order_composer()
     http_request = HttpRequest(body=request.json)
-    print("3")
     response = use_case.registry(http_request)
     return jsonify(response.body), response.status_code
