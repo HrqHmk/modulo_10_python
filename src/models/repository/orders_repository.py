@@ -47,15 +47,11 @@ class OrdersRepository(OrdersRepositoryInterface):
         data = collection.find_one({ "_id": ObjectId(object_id) })
         return data
 
-    def edit_registry(self, object_id: str)-> None:
+    def edit_registry(self, order_id: str, update_field: dict)-> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.update_one(
-            { "_id": ObjectId(object_id) }, #filtros
-            { "$set": { 
-                "cupom": True,
-                "itens.pastel.tipo": "frango"
-                }
-            }, #values edit
+            { "_id": ObjectId(order_id) }, #filtros
+            { "$set": update_field }, #values edit
         )
 
     def edit_many_registries(self)-> None:

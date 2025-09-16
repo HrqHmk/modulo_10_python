@@ -4,7 +4,7 @@ from src.main.http_types.http_response import HttpResponse
 from src.errors.error_handler import error_handler
 from src.errors.types.http_not_found import HttpNotFoundError
 
-class RegistryOrder():
+class RegistryFinder():
     def __init__(self, orders_repository: OrdersRepositoryInterface)-> None:
         self.__orders_repository = orders_repository
     
