@@ -8,5 +8,5 @@ class HttpRequest():
         )-> None:
         self.body = body
         self.headers = headers
-        self.params = path_params
+        self.path_params = path_params
         self.query = query
