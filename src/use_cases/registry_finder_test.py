@@ -7,7 +7,7 @@ class OrderRepositoryMock():
 
     def select_by_object_id(self, order_id: str)-> dict:
         self.called_with = order_id
-        return { "something": "something" }
+        return { "_id": 1 }
 
 def test_finder():
     repository = OrderRepositoryMock()
@@ -20,5 +20,6 @@ def test_finder():
     )
 
     response = use_case.find(mock_finder)
-    assert response.body["data"]["attributes"] == { "something": "something" }
+
+    assert response.body["data"]["attributes"] == { "_id": '1' }
     assert repository.called_with == order_id
